@@ -38,7 +38,7 @@ public class PaymentServiceImpl implements PaymentService{
             payment.setPrice(info.getPrice());
             payment.setUserId(info.getUserId());
             paymentRepository.save(payment);
-            return new Response<>(1, "Pay Success", null);
+            return new Response<>(2, "Pay Success", null);
         }else{
             PaymentServiceImpl.LOGGER.warn("[pay][Pay Failed][Order not found with order id][PaymentId: {}, OrderId: {}]",info.getId(),info.getOrderId());
             return new Response<>(0, "Pay Failed, order not found with order id" +info.getOrderId(), null);
