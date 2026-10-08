@@ -58,7 +58,7 @@ public class PaymentServiceImpl implements PaymentService{
     public Response query(HttpHeaders headers){
         List<Payment> paymentList = paymentRepository.findAll();
 
-        if (paymentList != null && !paymentList.isEmpty()) {
+        if (paymentList != null && paymentList.isEmpty()) {
             PaymentServiceImpl.LOGGER.info(
                     "[query][Find all payment Success][size:{}]",
                     paymentList.size());
