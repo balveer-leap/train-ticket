@@ -1,8 +1,6 @@
 package com.trainticket.service;
 
-import com.trainticket.entity.Money;
 import com.trainticket.entity.Payment;
-import com.trainticket.repository.AddMoneyRepository;
 import com.trainticket.repository.PaymentRepository;
 import edu.fudan.common.util.Response;
 import org.junit.Assert;
@@ -27,9 +25,6 @@ public class PaymentServiceImplTest {
 
     @Mock
     private PaymentRepository paymentRepository;
-
-    @Mock
-    private AddMoneyRepository addMoneyRepository;
 
     private HttpHeaders headers = new HttpHeaders();
 
@@ -59,7 +54,6 @@ public class PaymentServiceImplTest {
     public void testAddMoney() {
         Payment info = new Payment();
         info.setPrice("100.0");
-        Mockito.when(addMoneyRepository.save(Mockito.any(Money.class))).thenReturn(null);
         Response result = paymentServiceImpl.addMoney(info, headers);
         Assert.assertEquals(new Response<>(1, "Money Added Successfully", null), result);
     }

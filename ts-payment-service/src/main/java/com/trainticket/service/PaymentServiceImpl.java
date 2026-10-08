@@ -2,7 +2,6 @@ package com.trainticket.service;
 
 import com.trainticket.entity.Money;
 import com.trainticket.entity.Payment;
-import com.trainticket.repository.AddMoneyRepository;
 import com.trainticket.repository.PaymentRepository;
 import edu.fudan.common.util.Response;
 import org.slf4j.Logger;
@@ -23,9 +22,6 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Autowired
     PaymentRepository paymentRepository;
-
-    @Autowired
-    AddMoneyRepository addMoneyRepository;
 
     private final RefundPolicy refundPolicy = new RefundPolicy();
 
@@ -55,9 +51,8 @@ public class PaymentServiceImpl implements PaymentService{
             return new Response<>(0, "Add Money Failed, invalid price", null);
         }
         Money newMoney = buildMoney(info.getUserId(), info.getPrice());
-        Money saved = addMoneyRepository.save(newMoney);
         PaymentServiceImpl.LOGGER.info("[addMoney][Money added][UserId: {}, Amount: {}]", info.getUserId(), info.getPrice());
-        return new Response<>(1, "Money Added Successfully", saved);
+        return new Response<>(1, "Money Added Successfully", newMoney);
     }
 
     private Money buildMoney(String userId, String amount) {
