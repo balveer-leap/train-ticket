@@ -79,7 +79,7 @@ public class PaymentServiceImplTest {
         Payment payment = new Payment();
         Mockito.when(paymentRepository.findById(Mockito.anyString())).thenReturn(null);
         Mockito.when(paymentRepository.save(Mockito.any(Payment.class))).thenReturn(null);
-        paymentServiceImpl.initPayment(payment, headers);
+        paymentServiceImpl.initDefaultPayment(payment, headers);
         Mockito.verify(paymentRepository, Mockito.times(1)).save(Mockito.any(Payment.class));
     }
 
@@ -88,7 +88,7 @@ public class PaymentServiceImplTest {
         Payment payment = new Payment();
         Mockito.when(paymentRepository.findById(Mockito.anyString())).thenReturn(java.util.Optional.of(payment));
         Mockito.when(paymentRepository.save(Mockito.any(Payment.class))).thenReturn(null);
-        paymentServiceImpl.initPayment(payment, headers);
+        paymentServiceImpl.initDefaultPayment(payment, headers);
         Mockito.verify(paymentRepository, Mockito.times(0)).save(Mockito.any(Payment.class));
     }
 

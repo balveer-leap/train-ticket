@@ -81,7 +81,8 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public void initPayment(Payment payment, HttpHeaders headers){
+    public void initDefaultPayment(Payment payment, HttpHeaders headers){
+        PaymentServiceImpl.LOGGER.info("[initDefaultPayment][Start init default payment][PaymentId: {}]", payment.getId());
         Optional<Payment> paymentTemp = paymentRepository.findById(payment.getId());
         if(!paymentTemp.isPresent()){
             paymentRepository.save(payment);

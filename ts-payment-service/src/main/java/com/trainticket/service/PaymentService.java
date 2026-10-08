@@ -16,6 +16,6 @@ public interface PaymentService {
 
     Response query(HttpHeaders headers, int limit);
 
-    void initPayment(Payment payment,HttpHeaders headers);
+    void initDefaultPayment(Payment payment,HttpHeaders headers);
 
 }
