@@ -56,12 +56,17 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public Response query(HttpHeaders headers){
-        List<Payment> payments = paymentRepository.findAll();
-        if(payments!= null && !payments.isEmpty()){
-            PaymentServiceImpl.LOGGER.info("[query][Find all payment Success][size:{}]",payments.size());
-            return new Response<>(1,"Query Success",  payments);
-        }else {
-            PaymentServiceImpl.LOGGER.warn("[query][Find all payment warn][{}]","No content");
+        List<Payment> paymentList = paymentRepository.findAll();
+
+        if (paymentList != null && !paymentList.isEmpty()) {
+            PaymentServiceImpl.LOGGER.info(
+                    "[query][Find all payment Success][size:{}]",
+                    paymentList.size());
+            return new Response<>(1, "Query Success", paymentList);
+        } else {
+            PaymentServiceImpl.LOGGER.warn(
+                    "[query][Find all payment warn][{}]",
+                    "No content");
             return new Response<>(0, "No Content", null);
         }
     }
