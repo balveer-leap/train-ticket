@@ -27,6 +27,8 @@ public class PaymentServiceImpl implements PaymentService{
     @Autowired
     AddMoneyRepository addMoneyRepository;
 
+    private final RefundPolicy refundPolicy = new RefundPolicy();
+
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentServiceImpl.class);
 
     @Override
@@ -38,6 +40,7 @@ public class PaymentServiceImpl implements PaymentService{
             payment.setPrice(info.getPrice());
             payment.setUserId(info.getUserId());
             paymentRepository.save(payment);
+            PaymentServiceImpl.LOGGER.info("[pay][Pay Success][Refundable: {}]", refundPolicy.isRefundable(payment));
             return new Response<>(2, "Pay Success", null);
         }else{
             PaymentServiceImpl.LOGGER.warn("[pay][Pay Failed][Order not found with order id][PaymentId: {}, OrderId: {}]",info.getId(),info.getOrderId());
