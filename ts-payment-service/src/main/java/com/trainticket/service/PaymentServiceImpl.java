@@ -47,11 +47,21 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public Response addMoney(Payment info, HttpHeaders headers){
-        Money addMoney = new Money();
-        addMoney.setUserId(info.getUserId());
-        addMoney.setMoney(info.getPrice());
-        addMoneyRepository.save(addMoney);
-        return new Response<>(1,"Add Money Success", addMoney);
+        if (info.getPrice() == null || info.getPrice().trim().isEmpty()) {
+            PaymentServiceImpl.LOGGER.warn("[addMoney][Invalid price][UserId: {}]", info.getUserId());
+            return new Response<>(0, "Add Money Failed, invalid price", null);
+        }
+        Money newMoney = buildMoney(info.getUserId(), info.getPrice());
+        Money saved = addMoneyRepository.save(newMoney);
+        PaymentServiceImpl.LOGGER.info("[addMoney][Money added][UserId: {}, Amount: {}]", info.getUserId(), info.getPrice());
+        return new Response<>(1, "Money Added Successfully", saved);
+    }
+
+    private Money buildMoney(String userId, String amount) {
+        Money money = new Money();
+        money.setUserId(userId);
+        money.setMoney(amount.trim());
+        return money;
     }
 
     @Override
