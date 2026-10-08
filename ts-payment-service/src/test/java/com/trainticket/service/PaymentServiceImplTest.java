@@ -69,14 +69,14 @@ public class PaymentServiceImplTest {
         List<Payment> payments = new ArrayList<>();
         payments.add(new Payment());
         Mockito.when(paymentRepository.findAll()).thenReturn(payments);
-        Response result = paymentServiceImpl.query(headers);
+        Response result = paymentServiceImpl.query(headers, 100);
         Assert.assertEquals(new Response<>(1,"Query Success",  payments), result);
     }
 
     @Test
     public void testQuery2() {
         Mockito.when(paymentRepository.findAll()).thenReturn(null);
-        Response result = paymentServiceImpl.query(headers);
+        Response result = paymentServiceImpl.query(headers, 100);
         Assert.assertEquals(new Response<>(0, "No Content", null), result);
     }
 

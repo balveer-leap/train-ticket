@@ -44,6 +44,6 @@ public class PaymentController {
     @GetMapping(path = "/payment")
     public HttpEntity query(@RequestHeader HttpHeaders headers) {
         PaymentController.LOGGER.info("[query][Query payment]");
-        return ok(service.query(headers));
+        return ok(service.query(headers, 100));
     }
 }

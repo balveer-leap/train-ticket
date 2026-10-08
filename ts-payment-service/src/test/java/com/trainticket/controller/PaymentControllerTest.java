@@ -67,7 +67,7 @@ public class PaymentControllerTest {
 
     @Test
     public void testQuery() throws Exception {
-        Mockito.when(service.query(Mockito.any(HttpHeaders.class))).thenReturn(response);
+        Mockito.when(service.query(Mockito.any(HttpHeaders.class), Mockito.anyInt())).thenReturn(response);
         String result = mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/paymentservice/payment"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn().getResponse().getContentAsString();

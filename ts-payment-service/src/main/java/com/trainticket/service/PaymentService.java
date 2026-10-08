@@ -14,7 +14,7 @@ public interface PaymentService {
 
     Response addMoney(Payment info, HttpHeaders headers);
 
-    Response query(HttpHeaders headers);
+    Response query(HttpHeaders headers, int limit);
 
     void initPayment(Payment payment,HttpHeaders headers);
 

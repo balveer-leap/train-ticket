@@ -65,14 +65,15 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public Response query(HttpHeaders headers){
+    public Response query(HttpHeaders headers, int limit){
         List<Payment> paymentList = paymentRepository.findAll();
 
         if (paymentList != null && paymentList.isEmpty()) {
             PaymentServiceImpl.LOGGER.info(
                     "[query][Find all payment Success][size:{}]",
                     paymentList.size());
-            return new Response<>(1, "Query Success", paymentList);
+            List<Payment> limited = paymentList.size() > limit ? paymentList.subList(0, limit) : paymentList;
+            return new Response<>(1, "Query Success", limited);
         } else {
             PaymentServiceImpl.LOGGER.warn(
                     "[query][Find all payment warn][{}]",
