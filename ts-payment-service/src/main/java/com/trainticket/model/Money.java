@@ -1,4 +1,4 @@
-package com.trainticket.entity;
+package com.trainticket.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

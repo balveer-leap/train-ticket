@@ -1,6 +1,6 @@
 package com.trainticket.service;
 
-import com.trainticket.entity.Money;
+import com.trainticket.model.Money;
 import com.trainticket.entity.Payment;
 import com.trainticket.repository.PaymentRepository;
 import edu.fudan.common.util.Response;
