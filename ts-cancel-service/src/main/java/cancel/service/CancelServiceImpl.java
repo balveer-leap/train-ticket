@@ -282,7 +282,7 @@ public class CancelServiceImpl implements CancelService {
         HttpEntity requestEntity = new HttpEntity(newHeaders);
         String inside_payment_service_url = getServiceUrl("ts-inside-payment-service");
         ResponseEntity<Response> re = restTemplate.exchange(
-                inside_payment_service_url + "/api/v1/inside_pay_service/inside_payment/drawback/" + userId + "/" + money,
+                inside_payment_service_url + "/api/v1/inside_pay_service/inside_payment/refund/" + userId + "/" + money,
                 HttpMethod.GET,
                 requestEntity,
                 Response.class);
