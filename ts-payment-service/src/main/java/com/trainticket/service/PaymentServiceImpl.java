@@ -27,6 +27,10 @@ public class PaymentServiceImpl implements PaymentService{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentServiceImpl.class);
 
+    public Response pay(Payment info) {
+        return pay(info, null);
+    }
+
     @Override
     public Response pay(Payment info, HttpHeaders headers){
 
