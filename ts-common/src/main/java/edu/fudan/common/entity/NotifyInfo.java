@@ -24,3 +24,4 @@ public class NotifyInfo {
     private String price;
 
 }
+// poc: touched by S16

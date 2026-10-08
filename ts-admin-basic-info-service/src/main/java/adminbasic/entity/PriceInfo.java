@@ -21,3 +21,4 @@ public class PriceInfo {
     private double firstClassPriceRate;
 
 }
+// poc: touched by S16

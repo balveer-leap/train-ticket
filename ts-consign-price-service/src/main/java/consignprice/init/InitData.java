@@ -34,3 +34,4 @@ public class InitData implements CommandLineRunner {
         service.createAndModifyPrice(config, null);
     }
 }
+// poc: touched by S16

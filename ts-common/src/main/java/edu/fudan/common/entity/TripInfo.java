@@ -45,3 +45,4 @@ public class TripInfo {
 //        return StringUtils.String2Date(this.departureTime);
 //    }
 }
+// poc: touched by S16

@@ -26,3 +26,4 @@ public class InfoConstant {
     public static final String ROLES = "roles";
 
 }
+// poc: touched by S16

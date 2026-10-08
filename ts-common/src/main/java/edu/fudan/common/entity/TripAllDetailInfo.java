@@ -41,3 +41,4 @@ public class TripAllDetailInfo {
 //        this.travelDate = StringUtils.Date2String(travelDate);
 //    }
 }
+// poc: touched by S16

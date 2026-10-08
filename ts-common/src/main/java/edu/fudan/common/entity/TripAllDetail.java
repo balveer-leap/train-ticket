@@ -21,3 +21,4 @@ public class TripAllDetail {
     private Trip trip;
 
 }
+// poc: touched by S16

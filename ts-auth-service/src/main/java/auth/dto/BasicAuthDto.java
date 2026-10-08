@@ -22,3 +22,4 @@ public class BasicAuthDto implements Serializable {
     private String password;
     private String verificationCode;
 }
+// poc: touched by S16

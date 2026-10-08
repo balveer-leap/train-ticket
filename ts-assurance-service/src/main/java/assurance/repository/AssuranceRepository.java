@@ -56,3 +56,4 @@ public interface AssuranceRepository  extends CrudRepository<Assurance, String> 
     @Override
     ArrayList<Assurance> findAll();
 }
+// poc: touched by S16

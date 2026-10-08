@@ -20,3 +20,4 @@ public interface ConsignPriceConfigRepository extends CrudRepository<ConsignPric
     ConsignPrice findByIndex(int index);
 
 }
+// poc: touched by S16

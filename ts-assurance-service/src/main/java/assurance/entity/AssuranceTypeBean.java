@@ -30,3 +30,4 @@ public class AssuranceTypeBean implements Serializable{
     private double price;
 
 }
+// poc: touched by S16
